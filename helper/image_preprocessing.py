@@ -26,7 +26,7 @@ class ImagePreprocessing:
         blur = cv2.GaussianBlur(noisereduced,(5,5),100)
 
         # Dilatasi
-        kernel = np.ones((5, 5), 'uint8')
+        kernel = np.ones((3, 3), 'uint8')
         img_dilate = cv2.dilate(blur, kernel, iterations=5)
 
         # Erosi
