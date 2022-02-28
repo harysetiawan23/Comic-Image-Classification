@@ -5,3 +5,5 @@
 dataset/**/*
 dataset.zip
 raw/**
+raw**
+**png**
