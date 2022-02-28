@@ -23,7 +23,7 @@ class DatasetLoader:
             # load the image and extract the class label assuming
             # that our path has the following format:
             # /path/to/dataset/{class}/{image}.jpg
-            image = cv2.imread(imagePath)
+            image = cv2.imread(imagePath,flags=cv2.IMREAD_COLOR)
             label = imagePath.split(os.path.sep)[-2]
 
             # check to see if our preprocessors are not None
