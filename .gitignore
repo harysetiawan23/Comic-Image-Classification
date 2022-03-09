@@ -1,4 +1,4 @@
-.ipynb_checkpoints/**
+.ipynb_checkpoints**
 .vscode/**
 */**/__pycache__
 .DS_Store
@@ -7,3 +7,6 @@ dataset.zip
 raw/**
 raw**
 **png**
+**pdf**
+**zip**
+**2129101033**
