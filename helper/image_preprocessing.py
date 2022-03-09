@@ -46,11 +46,11 @@ class HSVPreprocessing:
         self.heigh = heigh
         self.inter = inter
 
-        # define range of red color in HSV
-        self.babi_threshold = np.array([[0 , 47,  197], [179 ,86,  246]])
-        self.buaya_threshold = np.array([[10 , 9, 198],[84 ,  114,  236]])
-        self.gajah_threshold = np.array([[0 ,  0,  136],[179 ,  34, 172]])
-        self.kucing_threshold = np.array([[2 ,  0, 0],[52 ,  255, 197]])
+        # define range of class threshold color in HSV
+        self.babi_threshold = np.array([[169 , 0, 180], [179 ,  127,  244]])
+        self.buaya_threshold = np.array([[18 ,0, 114],[59 , 255, 235]])
+        self.gajah_threshold = np.array([[0 , 0, 115],[179 ,  51,  179]])
+        self.kucing_threshold = np.array([[0 ,0,  89],[17 ,  162,244]])
 
     def preprocess(self, image):
 		# resize the image to a fixed size, ignoring the aspect
@@ -72,11 +72,7 @@ class HSVPreprocessing:
         combined = cv2.add(babi_buaya,gajah_kucing)
 
 
-        eroded = cv2.dilate(combined,(3,3),iterations=1)
-        delated = cv2.dilate(eroded,(3,3),iterations=1)
-        
-
-        selected_image = cv2.bitwise_and(noisereduced,noisereduced,mask=delated)
+        selected_image = cv2.bitwise_and(noisereduced,noisereduced,mask=combined)
         selected_image = cv2.resize(selected_image,(self.width,self.heigh),interpolation=self.inter)
         selected_image = cv2.cvtColor(selected_image,cv2.COLOR_RGB2HSV)
         return selected_image
